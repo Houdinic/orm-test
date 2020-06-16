@@ -73,8 +73,8 @@ session = Session()
 # mn_books_categories = Table('mn_books_categories', META_DATA,
 #                             autoload=True, autoload_with=engine)
 # print(1)
-files = Table('files', META_DATA, autoload=True,
-              autoload_with=engine)
+"""files = Table('files', META_DATA, autoload=True,
+              autoload_with=engine)"""
 # filetypes = Table('filetypes', META_DATA, autoload=True,
 #                   autoload_with=engine)
 # encodings = Table('encodings', META_DATA, autoload=True,
@@ -100,8 +100,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.automap import automap_base
 Base = automap_base()
 Base.prepare(engine, reflect=True)
-files=Base.classes.files
-re = session.query(files).filter(files.c.fk_books==241).count()
+account=Base.classes.account
+# session.add(account(username='aa',password ='tt',email ='434',created_on='Jan-08-1999'))
+# session.commit()
+# print(re)
+print(session.query(account).count())
+"""re = session.query(files).filter(files.c.fk_books==241).count()
 print(re)
 session.add(files(fk_books=241, 
             filename='cache/epub/1897/pg7.rdf',
@@ -110,7 +114,7 @@ files.insert().values(fk_books=241,
             filename='cache/epub/1897/pg7.rdf',
             filesize=5464, diskstatus=2, obsoleted=0)
 re = session.query(files).filter(files.c.fk_books==241).count()
-print(re)
+print(re)"""
 """mn_books_bookshelves=Table('mn_books_bookshelves', META_DATA,
                            autoload=True, autoload_with=engine)
 bookshelves=Table('bookshelves', META_DATA, autoload=True,
